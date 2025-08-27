@@ -51,7 +51,7 @@ type Event struct {
 	Promote                    int                  `json:"promote,string"`
 	Sticky                     int                  `json:"sticky,string"`
 	Created                    int64                `json:"created,string"`
-	Changed                    int64                `json:"changed,string"`
+	Changed                    string               `json:"changed"`
 	FeedNid                    string               `json:"feed_nid"`
 	FlagAbuseNodeUser          []*User              `json:"flag_abuse_node_user"`
 	FlagAbuseWithelistNodeUser []*User              `json:"flag_abuse_withelist_node_user"`
