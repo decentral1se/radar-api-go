@@ -18,12 +18,13 @@ package radarapi
 
 import (
 	"fmt"
-	"golang.org/x/text/language"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"time"
+
+	"golang.org/x/text/language"
 )
 
 const baseUrl = "https://radar.squat.net/api/1.2/"
@@ -34,9 +35,9 @@ type RadarClient struct {
 
 // Returns an instance of RadarClient which can be used to interact with the
 // radar server.
-func NewRadarClient() *RadarClient {
+func NewRadarClient(timeout int) *RadarClient {
 	return &RadarClient{
-		&http.Client{Timeout: time.Second * 10},
+		&http.Client{Timeout: time.Duration(timeout) * time.Second},
 	}
 }
 
