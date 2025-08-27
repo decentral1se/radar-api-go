@@ -98,7 +98,7 @@ type User struct {
 }
 
 type File struct {
-	File FileUnderlying
+	File FileUnderlying `json:"file,omitempty"`
 }
 
 type FileUnderlying struct {
@@ -124,6 +124,16 @@ func (e *Body) UnmarshalJSON(data []byte) error {
 
 func (e *Link) UnmarshalJSON(data []byte) error {
 	type tmp *Link
+	return unmarshalJSON(tmp(e), data)
+}
+
+func (e *File) UnmarshalJSON(data []byte) error {
+	type tmp *File
+	return unmarshalJSON(tmp(e), data)
+}
+
+func (e *FileUnderlying) UnmarshalJSON(data []byte) error {
+	type tmp *FileUnderlying
 	return unmarshalJSON(tmp(e), data)
 }
 
