@@ -16,7 +16,7 @@ type Event struct {
 	OgGroupRef                 []*group.Group       `json:"og_group_ref"`
 	OgGroupRequest             []*group.Group       `json:"og_group_request"`
 	DateTime                   []*DateTime          `json:"date_time"`
-	Image                      *file.File           `json:"image"`
+	Image                      *File                `json:"image"`
 	Price                      []string             `json:"price"`
 	PriceCategory              []*term.Term         `json:"price_category"`
 	EventStatus                string               `json:"event_status"`
@@ -95,6 +95,17 @@ type User struct {
 	Id       int    `json:"id"`
 	Resource string `json:"resource"`
 	Label    string `json:"label"`
+}
+
+type File struct {
+	File FileUnderlying
+}
+
+type FileUnderlying struct {
+	Uri      string `json:"uri"`
+	Id       string `json:"id"`
+	Resource string `json:"resource"`
+	Filename string `json:"filename,omitempty"`
 }
 
 func (e *Event) UnmarshalJSON(data []byte) error {
